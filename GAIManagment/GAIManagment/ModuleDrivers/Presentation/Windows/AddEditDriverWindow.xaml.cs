@@ -68,6 +68,7 @@ namespace GAIManagment.ModuleDrivers.Presentation.Windows
             tbDescription.Text = driver.Description;
 
             imgPhoto.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + $"/DriversPhotos/{driver.PhotoPath}"));
+            imgPhoto.Tag = driver.PhotoPath;
 
             this.ShowDialog();
         }
@@ -94,8 +95,12 @@ namespace GAIManagment.ModuleDrivers.Presentation.Windows
             try
             {
                 var image = imgPhoto.Source as BitmapImage;
-                
-                File.Copy(image.UriSource.OriginalString, Environment.CurrentDirectory + $"/DriversPhotos/{image.UriSource.Segments.Last()}");
+                var imgName = imgPhoto.Tag as string;
+                var dir = image.UriSource.OriginalString;
+
+                //Если фотография не изменилась, то ничего не делаем
+                if (dir.Remove(dir.Length - 1 - imgName.Length) != Environment.CurrentDirectory + "/DriversPhotos")
+                    File.Copy(image.UriSource.OriginalString, Environment.CurrentDirectory + $"/DriversPhotos/{image.UriSource.Segments.Last()}");
             }
             catch (Exception ex)
             {

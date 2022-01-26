@@ -1,0 +1,6 @@
+C:\Users\pemel\Documents\VSPractice\VSpractice\REG_MARK_LIB\REG_MARK_LIB\bin\Debug\REG_MARK_LIB.dll
+C:\Users\pemel\Documents\VSPractice\VSpractice\REG_MARK_LIB\REG_MARK_LIB\bin\Debug\REG_MARK_LIB.pdb
+C:\Users\pemel\Documents\VSPractice\VSpractice\REG_MARK_LIB\REG_MARK_LIB\obj\Debug\REG_MARK_LIB.csproj.AssemblyReference.cache
+C:\Users\pemel\Documents\VSPractice\VSpractice\REG_MARK_LIB\REG_MARK_LIB\obj\Debug\REG_MARK_LIB.csproj.CoreCompileInputs.cache
+C:\Users\pemel\Documents\VSPractice\VSpractice\REG_MARK_LIB\REG_MARK_LIB\obj\Debug\REG_MARK_LIB.dll
+C:\Users\pemel\Documents\VSPractice\VSpractice\REG_MARK_LIB\REG_MARK_LIB\obj\Debug\REG_MARK_LIB.pdb

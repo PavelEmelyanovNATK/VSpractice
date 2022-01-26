@@ -1,0 +1,6 @@
+C:\Users\pemel\Documents\VSPractice\VSpractice\VIN_LIB\VIN_LIB\bin\Debug\VIN_LIB.dll
+C:\Users\pemel\Documents\VSPractice\VSpractice\VIN_LIB\VIN_LIB\bin\Debug\VIN_LIB.pdb
+C:\Users\pemel\Documents\VSPractice\VSpractice\VIN_LIB\VIN_LIB\obj\Debug\VIN_LIB.csproj.AssemblyReference.cache
+C:\Users\pemel\Documents\VSPractice\VSpractice\VIN_LIB\VIN_LIB\obj\Debug\VIN_LIB.csproj.CoreCompileInputs.cache
+C:\Users\pemel\Documents\VSPractice\VSpractice\VIN_LIB\VIN_LIB\obj\Debug\VIN_LIB.dll
+C:\Users\pemel\Documents\VSPractice\VSpractice\VIN_LIB\VIN_LIB\obj\Debug\VIN_LIB.pdb

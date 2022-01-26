@@ -1,0 +1,105 @@
+﻿<Window x:Class="GAIManagment.ModuleDrivers.Presentation.Windows.AddEditDriverWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GAIManagment.ModuleDrivers.Presentation.Windows"
+        mc:Ignorable="d"
+        Title="AddEditDriverWindow" Height="550" Width="450"
+        ResizeMode="NoResize">
+    <Grid>
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="ID: " TextAlignment="Right" Width="200"/>
+                <TextBlock x:Name="tbID" Width="200"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Фамилия: " TextAlignment="Right" Width="200"/>
+                <TextBox x:Name="tbSurname" Width="200" MaxLines="1"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Имя: " TextAlignment="Right" Width="200"/>
+                <TextBox x:Name="tbName" Width="200" MaxLines="1"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Отчество: " TextAlignment="Right" Width="200"/>
+                <TextBox x:Name="tbPatronymic" Width="200" MaxLines="1"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Серия паспорта: " TextAlignment="Right" Width="200"/>
+                <TextBox x:Name="tbPassSeries" Width="200" MaxLines="1"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Номер паспорта: " TextAlignment="Right" Width="200"/>
+                <TextBox x:Name="tbPassNumber" Width="200" MaxLines="1"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Адрес регистрации: " TextAlignment="Right" Width="200"/>
+                <TextBox x:Name="tbAddress" Width="200" MaxLines="1"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Адрес проживания: " TextAlignment="Right" Width="200"/>
+                <TextBox x:Name="tbAddressLife" Width="200" MaxLines="1"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Место работы: " TextAlignment="Right" Width="200"/>
+                <TextBox x:Name="tbCompany" Width="200" MaxLines="1"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Должность: " TextAlignment="Right" Width="200"/>
+                <TextBox x:Name="tbJobName" Width="200" MaxLines="1"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Телефон: " TextAlignment="Right" Width="200"/>
+                <TextBox x:Name="tbPhone" Width="200" MaxLines="1"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Email: " TextAlignment="Right" Width="200"/>
+                <TextBox x:Name="tbEmail" Width="200" MaxLines="1"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Фотография: " TextAlignment="Right" Width="200"/>
+                <Image x:Name="imgPhoto" Width="120" Height="120" Stretch="Uniform" RenderOptions.BitmapScalingMode="Fant"/>
+                <Button x:Name="btnPickPhoto" Content="Выбрать" Width="80" VerticalAlignment="Top" Click="btnPickPhoto_Click"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Заметки: " TextAlignment="Right" Width="200"/>
+                <TextBox x:Name="tbDescription" Width="200" Height="100" TextWrapping="Wrap"/>
+            </StackPanel>
+
+            <Button 
+                x:Name="btnAction"
+                Click="btnAction_Click"
+                Content="Action"/>
+        </StackPanel>
+    </Grid>
+</Window>

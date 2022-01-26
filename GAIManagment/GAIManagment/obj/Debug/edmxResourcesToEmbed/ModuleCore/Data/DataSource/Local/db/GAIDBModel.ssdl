@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище VSpracticeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CarColor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="NameRU" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ColorNameRU" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="IsMetallic" Type="bit" Nullable="false" />
+    <Property Name="NameEN" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ColorNameEN" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="PassportSeries" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="PassportNumber" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="PostCode" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="AddressLife" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Company" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="JobName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhotoPath" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "VSpractice.dbo.Fine" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Fine">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="CarNum" />
+      <PropertyRef Name="Region" />
+      <PropertyRef Name="LicenceNum" />
+      <PropertyRef Name="Photo" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="CarNum" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Region" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LicenceNum" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="License">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LicenceDate" Type="date" Nullable="false" />
+    <Property Name="ExpireDate" Type="date" Nullable="false" />
+    <Property Name="Categories" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="LicenseSeries" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="LicenseNumber" Type="nvarchar" MaxLength="8" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LicenseToDriver">
+    <Key>
+      <PropertyRef Name="LicenseID" />
+    </Key>
+    <Property Name="LicenseID" Type="int" Nullable="false" />
+    <Property Name="DriverID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RegionCode">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RegionNameEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="RegionNameRU" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SubjectCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="OKATOCode" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ISO" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vehicle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VIN" Type="varchar" MaxLength="17" Nullable="false" />
+    <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Weight" Type="int" Nullable="false" />
+    <Property Name="ColorID" Type="int" Nullable="false" />
+    <Property Name="EngineType" Type="int" Nullable="false" />
+    <Property Name="TypeOfDrive" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_LicenseToDriver_Driver">
+    <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+    <End Role="LicenseToDriver" Type="Self.LicenseToDriver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Driver">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LicenseToDriver">
+        <PropertyRef Name="DriverID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LicenseToDriver_License">
+    <End Role="License" Type="Self.License" Multiplicity="1" />
+    <End Role="LicenseToDriver" Type="Self.LicenseToDriver" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="License">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LicenseToDriver">
+        <PropertyRef Name="LicenseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище VSpracticeModelContainer">
+    <EntitySet Name="CarColor" EntityType="Self.CarColor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="License" EntityType="Self.License" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LicenseToDriver" EntityType="Self.LicenseToDriver" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegionCode" EntityType="Self.RegionCode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fine" EntityType="Self.Fine" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Fine].[ID] AS [ID], 
+    [Fine].[CarNum] AS [CarNum], 
+    [Fine].[Region] AS [Region], 
+    [Fine].[LicenceNum] AS [LicenceNum], 
+    [Fine].[Photo] AS [Photo]
+    FROM [dbo].[Fine] AS [Fine]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_LicenseToDriver_Driver" Association="Self.FK_LicenseToDriver_Driver">
+      <End Role="Driver" EntitySet="Driver" />
+      <End Role="LicenseToDriver" EntitySet="LicenseToDriver" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LicenseToDriver_License" Association="Self.FK_LicenseToDriver_License">
+      <End Role="License" EntitySet="License" />
+      <End Role="LicenseToDriver" EntitySet="LicenseToDriver" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

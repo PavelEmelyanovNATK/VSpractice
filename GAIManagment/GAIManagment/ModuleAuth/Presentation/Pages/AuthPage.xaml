@@ -1,0 +1,28 @@
+﻿<Page x:Class="GAIManagment.ModuleAuth.Presentation.Pages.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GAIManagment.ModuleAuth.Presentation.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AuthPage">
+
+    <Grid Background="White">
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <StackPanel>
+                <TextBlock Text="Email"/>
+                <TextBox Width="250"/>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock Text="Пароль"/>
+                <TextBox Width="250"/>
+            </StackPanel>
+
+            <Button Content="Войти" Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

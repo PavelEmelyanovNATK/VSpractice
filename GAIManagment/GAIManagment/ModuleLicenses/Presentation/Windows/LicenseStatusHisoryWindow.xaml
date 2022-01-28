@@ -1,0 +1,36 @@
+﻿<Window x:Class="GAIManagment.ModuleLicenses.Presentation.Windows.LicenseStatusHisoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GAIManagment.ModuleLicenses.Presentation.Windows"
+        mc:Ignorable="d"
+        Title="LicenseStatusHisoryWindow" Height="450" Width="500"
+        Loaded="Window_Loaded"
+        ResizeMode="NoResize">
+    <Grid>
+        <ListView
+            x:Name="lvHistory"
+            HorizontalContentAlignment="Left"
+            >
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding Status.Name}"/>
+                        <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding Date}"/>
+                        <GridViewColumn Header="Комментарий">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <TextBlock Grid.Column = "2" Text="{Binding Description}" TextWrapping="Wrap" Width="200"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+            
+        </ListView>
+    </Grid>
+</Window>

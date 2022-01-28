@@ -1,5 +1,6 @@
 ﻿using GAIManagment.ModuleCore.Domain;
 using GAIManagment.ModuleDrivers.Presentation.Pages;
+using GAIManagment.ModuleLicenses.Presentation.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,12 +30,12 @@ namespace GAIManagment.ModuleMainMenu.Presentation.Pages
 
         private void DriversButton_Click(object sender, RoutedEventArgs e)
         {
-            NavService.Navigate(new DriversPage());
-
+            NavController.Navigate(new DriversPage());
         }
 
         private void LicensesButton_Click(object sender, RoutedEventArgs e)
         {
+            NavController.Navigate(new LicensesPage());
         }
     }
 }

@@ -39,7 +39,7 @@ namespace GAIManagment.ModuleDrivers.Presentation.Pages
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            NavService.GoBack();
+            NavController.GoBack();
         }
 
 

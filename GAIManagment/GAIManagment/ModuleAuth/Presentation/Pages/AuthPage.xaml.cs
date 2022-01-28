@@ -29,7 +29,7 @@ namespace GAIManagment.ModuleAuth.Presentation.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavService.SetPage(new MainMenuPage());
+            NavController.SetPage(new MainMenuPage());
         }
     }
 }

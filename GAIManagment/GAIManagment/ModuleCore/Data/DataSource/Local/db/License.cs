@@ -14,13 +14,23 @@ namespace GAIManagment.ModuleCore.Data.DataSource.Local.db
     
     public partial class License
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public License()
+        {
+            this.LicenseStatusHistories = new HashSet<LicenseStatusHistory>();
+        }
+    
         public int ID { get; set; }
         public System.DateTime LicenceDate { get; set; }
         public System.DateTime ExpireDate { get; set; }
         public string Categories { get; set; }
         public string LicenseSeries { get; set; }
         public string LicenseNumber { get; set; }
+        public int StatusID { get; set; }
     
+        public virtual Status Status { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LicenseStatusHistory> LicenseStatusHistories { get; set; }
         public virtual Driver Driver { get; set; }
     }
 }

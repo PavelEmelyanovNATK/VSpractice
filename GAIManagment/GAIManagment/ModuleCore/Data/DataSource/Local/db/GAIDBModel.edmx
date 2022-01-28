@@ -37,17 +37,11 @@
           <Property Name="PhotoPath" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="300" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "VSpractice.dbo.Fine" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="Fine">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="CarNum" />
-            <PropertyRef Name="Region" />
-            <PropertyRef Name="LicenceNum" />
-            <PropertyRef Name="Photo" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CarNum" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Region" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LicenceNum" Type="nvarchar" MaxLength="20" Nullable="false" />
@@ -63,6 +57,17 @@
           <Property Name="Categories" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="LicenseSeries" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="LicenseNumber" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LicenseStatusHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LicenseID" Type="int" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
         </EntityType>
         <EntityType Name="LicenseToDriver">
           <Key>
@@ -88,6 +93,13 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -123,6 +135,54 @@
           <Property Name="EngineType" Type="int" Nullable="false" />
           <Property Name="TypeOfDrive" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Fine_Fine">
+          <End Role="Fine" Type="Self.Fine" Multiplicity="1" />
+          <End Role="Fine1" Type="Self.Fine" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Fine">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Fine1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_License_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="License" Type="Self.License" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="License">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicenseStatusHistory_License">
+          <End Role="License" Type="Self.License" Multiplicity="1" />
+          <End Role="LicenseStatusHistory" Type="Self.LicenseStatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="License">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LicenseStatusHistory">
+              <PropertyRef Name="LicenseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicenseStatusHistory_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="LicenseStatusHistory" Type="Self.LicenseStatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LicenseStatusHistory">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_LicenseToDriver_Driver">
           <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
           <End Role="LicenseToDriver" Type="Self.LicenseToDriver" Multiplicity="*" />
@@ -162,22 +222,32 @@
         <EntityContainer Name="Хранилище VSpracticeModelContainer">
           <EntitySet Name="CarColor" EntityType="Self.CarColor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fine" EntityType="Self.Fine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="License" EntityType="Self.License" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LicenseStatusHistory" EntityType="Self.LicenseStatusHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LicenseToDriver" EntityType="Self.LicenseToDriver" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RegionCode" EntityType="Self.RegionCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Fine" EntityType="Self.Fine" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Fine].[ID] AS [ID], 
-    [Fine].[CarNum] AS [CarNum], 
-    [Fine].[Region] AS [Region], 
-    [Fine].[LicenceNum] AS [LicenceNum], 
-    [Fine].[Photo] AS [Photo]
-    FROM [dbo].[Fine] AS [Fine]</DefiningQuery>
-          </EntitySet>
+          <AssociationSet Name="FK_Fine_Fine" Association="Self.FK_Fine_Fine">
+            <End Role="Fine" EntitySet="Fine" />
+            <End Role="Fine1" EntitySet="Fine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_License_Status" Association="Self.FK_License_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="License" EntitySet="License" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicenseStatusHistory_License" Association="Self.FK_LicenseStatusHistory_License">
+            <End Role="License" EntitySet="License" />
+            <End Role="LicenseStatusHistory" EntitySet="LicenseStatusHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicenseStatusHistory_Status" Association="Self.FK_LicenseStatusHistory_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="LicenseStatusHistory" EntitySet="LicenseStatusHistory" />
+          </AssociationSet>
           <AssociationSet Name="FK_LicenseToDriver_Driver" Association="Self.FK_LicenseToDriver_Driver">
             <End Role="Driver" EntitySet="Driver" />
             <End Role="LicenseToDriver" EntitySet="LicenseToDriver" />
@@ -229,6 +299,18 @@
           <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Licenses" Relationship="Self.LicenseToDriver" FromRole="Driver" ToRole="License" />
         </EntityType>
+        <EntityType Name="Fine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CarNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LicenceNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Photo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Fine1" Relationship="Self.FK_Fine_Fine" FromRole="Fine" ToRole="Fine1" />
+          <NavigationProperty Name="Fine2" Relationship="Self.FK_Fine_Fine" FromRole="Fine1" ToRole="Fine" />
+        </EntityType>
         <EntityType Name="License">
           <Key>
             <PropertyRef Name="ID" />
@@ -239,7 +321,22 @@
           <Property Name="Categories" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LicenseSeries" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LicenseNumber" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_License_Status" FromRole="License" ToRole="Status" />
+          <NavigationProperty Name="LicenseStatusHistories" Relationship="Self.FK_LicenseStatusHistory_License" FromRole="License" ToRole="LicenseStatusHistory" />
           <NavigationProperty Name="Driver" Relationship="Self.LicenseToDriver" FromRole="License" ToRole="Driver" />
+        </EntityType>
+        <EntityType Name="LicenseStatusHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LicenseID" Type="Int32" Nullable="false" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="License" Relationship="Self.FK_LicenseStatusHistory_License" FromRole="LicenseStatusHistory" ToRole="License" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_LicenseStatusHistory_Status" FromRole="LicenseStatusHistory" ToRole="Status" />
         </EntityType>
         <EntityType Name="RegionCode">
           <Key>
@@ -260,6 +357,15 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Licenses" Relationship="Self.FK_License_Status" FromRole="Status" ToRole="License" />
+          <NavigationProperty Name="LicenseStatusHistories" Relationship="Self.FK_LicenseStatusHistory_Status" FromRole="Status" ToRole="LicenseStatusHistory" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -295,20 +401,54 @@
           <Property Name="EngineType" Type="Int32" Nullable="false" />
           <Property Name="TypeOfDrive" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="Fine">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="CarNum" />
-            <PropertyRef Name="Region" />
-            <PropertyRef Name="LicenceNum" />
-            <PropertyRef Name="Photo" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="CarNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LicenceNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Photo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
+        <Association Name="FK_Fine_Fine">
+          <End Role="Fine" Type="Self.Fine" Multiplicity="1" />
+          <End Role="Fine1" Type="Self.Fine" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Fine">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Fine1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_License_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="License" Type="Self.License" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="License">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicenseStatusHistory_License">
+          <End Role="License" Type="Self.License" Multiplicity="1" />
+          <End Role="LicenseStatusHistory" Type="Self.LicenseStatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="License">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LicenseStatusHistory">
+              <PropertyRef Name="LicenseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicenseStatusHistory_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="LicenseStatusHistory" Type="Self.LicenseStatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LicenseStatusHistory">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -328,13 +468,31 @@
         <EntityContainer Name="VSpracticeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CarColors" EntityType="Self.CarColor" />
           <EntitySet Name="Drivers" EntityType="Self.Driver" />
+          <EntitySet Name="Fines" EntityType="Self.Fine" />
           <EntitySet Name="Licenses" EntityType="Self.License" />
+          <EntitySet Name="LicenseStatusHistories" EntityType="Self.LicenseStatusHistory" />
           <EntitySet Name="RegionCodes" EntityType="Self.RegionCode" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
-          <EntitySet Name="Fines" EntityType="Self.Fine" />
+          <AssociationSet Name="FK_Fine_Fine" Association="Self.FK_Fine_Fine">
+            <End Role="Fine" EntitySet="Fines" />
+            <End Role="Fine1" EntitySet="Fines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_License_Status" Association="Self.FK_License_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="License" EntitySet="Licenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicenseStatusHistory_License" Association="Self.FK_LicenseStatusHistory_License">
+            <End Role="License" EntitySet="Licenses" />
+            <End Role="LicenseStatusHistory" EntitySet="LicenseStatusHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicenseStatusHistory_Status" Association="Self.FK_LicenseStatusHistory_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="LicenseStatusHistory" EntitySet="LicenseStatusHistories" />
+          </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Roles" />
             <End Role="User" EntitySet="Users" />
@@ -384,6 +542,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Fines">
+            <EntityTypeMapping TypeName="VSpracticeModel.Fine">
+              <MappingFragment StoreEntitySet="Fine">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CarNum" ColumnName="CarNum" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="LicenceNum" ColumnName="LicenceNum" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Licenses">
             <EntityTypeMapping TypeName="VSpracticeModel.License">
               <MappingFragment StoreEntitySet="License">
@@ -393,6 +562,18 @@
                 <ScalarProperty Name="Categories" ColumnName="Categories" />
                 <ScalarProperty Name="LicenseSeries" ColumnName="LicenseSeries" />
                 <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LicenseStatusHistories">
+            <EntityTypeMapping TypeName="VSpracticeModel.LicenseStatusHistory">
+              <MappingFragment StoreEntitySet="LicenseStatusHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LicenseID" ColumnName="LicenseID" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -412,6 +593,14 @@
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="VSpracticeModel.Role">
               <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="VSpracticeModel.Status">
+              <MappingFragment StoreEntitySet="Status">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
@@ -450,17 +639,6 @@
                 <ScalarProperty Name="ColorID" ColumnName="ColorID" />
                 <ScalarProperty Name="EngineType" ColumnName="EngineType" />
                 <ScalarProperty Name="TypeOfDrive" ColumnName="TypeOfDrive" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Fines">
-            <EntityTypeMapping TypeName="VSpracticeModel.Fine">
-              <MappingFragment StoreEntitySet="Fine">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CarNum" ColumnName="CarNum" />
-                <ScalarProperty Name="Region" ColumnName="Region" />
-                <ScalarProperty Name="LicenceNum" ColumnName="LicenceNum" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

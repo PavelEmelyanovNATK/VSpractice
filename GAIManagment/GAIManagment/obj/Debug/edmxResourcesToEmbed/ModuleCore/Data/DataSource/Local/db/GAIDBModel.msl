@@ -35,6 +35,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Fines">
+      <EntityTypeMapping TypeName="VSpracticeModel.Fine">
+        <MappingFragment StoreEntitySet="Fine">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CarNum" ColumnName="CarNum" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="LicenceNum" ColumnName="LicenceNum" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Licenses">
       <EntityTypeMapping TypeName="VSpracticeModel.License">
         <MappingFragment StoreEntitySet="License">
@@ -44,6 +55,18 @@
           <ScalarProperty Name="Categories" ColumnName="Categories" />
           <ScalarProperty Name="LicenseSeries" ColumnName="LicenseSeries" />
           <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LicenseStatusHistories">
+      <EntityTypeMapping TypeName="VSpracticeModel.LicenseStatusHistory">
+        <MappingFragment StoreEntitySet="LicenseStatusHistory">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LicenseID" ColumnName="LicenseID" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -63,6 +86,14 @@
     <EntitySetMapping Name="Roles">
       <EntityTypeMapping TypeName="VSpracticeModel.Role">
         <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="VSpracticeModel.Status">
+        <MappingFragment StoreEntitySet="Status">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
@@ -101,17 +132,6 @@
           <ScalarProperty Name="ColorID" ColumnName="ColorID" />
           <ScalarProperty Name="EngineType" ColumnName="EngineType" />
           <ScalarProperty Name="TypeOfDrive" ColumnName="TypeOfDrive" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Fines">
-      <EntityTypeMapping TypeName="VSpracticeModel.Fine">
-        <MappingFragment StoreEntitySet="Fine">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="CarNum" ColumnName="CarNum" />
-          <ScalarProperty Name="Region" ColumnName="Region" />
-          <ScalarProperty Name="LicenceNum" ColumnName="LicenceNum" />
-          <ScalarProperty Name="Photo" ColumnName="Photo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

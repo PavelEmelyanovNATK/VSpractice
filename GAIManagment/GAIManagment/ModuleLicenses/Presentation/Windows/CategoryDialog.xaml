@@ -1,0 +1,62 @@
+﻿<Window x:Class="GAIManagment.ModuleLicenses.Presentation.Windows.CategoryDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GAIManagment.ModuleLicenses.Presentation.Windows" xmlns:system="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Категории" Height="160" Width="380"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <ListView
+            x:Name="lvCategories"
+            Grid.Row="0"
+            VerticalAlignment="Center">
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Width="320"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <EventSetter Event="MouseDoubleClick" Handler="ListView_MouseDoubleClick"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Width="30" Height="30" Background="LightGray" BorderBrush="Black" BorderThickness="1">
+                        <TextBlock Text="{Binding}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <system:String>A</system:String>
+            <system:String>A1</system:String>
+            <system:String>B</system:String>
+            <system:String>BE</system:String>
+            <system:String>B1</system:String>
+            <system:String>C</system:String>
+            <system:String>CE</system:String>
+            <system:String>C1E</system:String>
+            <system:String>D</system:String>
+            <system:String>DE</system:String>
+            <system:String>D1</system:String>
+            <system:String>D1E</system:String>
+            <system:String>M</system:String>
+            <system:String>Tm</system:String>
+            <system:String>Tb</system:String>
+        </ListView>
+
+        <Grid Grid.Row="1">
+            <Button
+                Content="Выбрать"
+                Click="Button_Click"/>
+        </Grid>
+    </Grid>
+</Window>

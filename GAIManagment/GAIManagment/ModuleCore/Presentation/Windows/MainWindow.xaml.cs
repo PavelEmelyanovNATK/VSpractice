@@ -29,8 +29,8 @@ namespace GAIManagment
             InitializeComponent();
 
             PracticeDAO.Refresh();
-            NavService.Setup(frameMain);
-            NavService.SetPage(new AuthPage());
+            NavController.Setup(frameMain);
+            NavController.SetPage(new AuthPage());
         }
     }
 }

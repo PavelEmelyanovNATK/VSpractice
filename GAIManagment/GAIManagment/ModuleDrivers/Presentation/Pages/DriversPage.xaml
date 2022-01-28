@@ -23,8 +23,7 @@
         <ListView
             x:Name="lvDrivers"
             Grid.Row="1"
-            SelectionChanged="lvDrivers_SelectionChanged"
-            MouseDoubleClick="lvDrivers_MouseDoubleClick">
+            SelectionChanged="lvDrivers_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -35,6 +34,12 @@
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <EventSetter Event="MouseDoubleClick" Handler="lvDrivers_MouseDoubleClick"/>
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
 
         <StackPanel

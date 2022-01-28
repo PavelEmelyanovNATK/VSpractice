@@ -38,3 +38,15 @@ C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Deb
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\GAIManagment.csproj.CopyComplete
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\GAIManagment.exe
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\GAIManagment.pdb
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Pages\LicensesPage.g.cs
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Pages\LicensesPage.baml
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\RegLicenseWindow.g.cs
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\RegLicenseWindow.baml
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\DriversDialog.g.cs
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\DriversDialog.baml
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\CategoryDialog.g.cs
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\CategoryDialog.baml
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\LicenseStatusHisoryWindow.g.cs
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\LicenseStatusHisoryWindow.baml
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\ChangeStatusWindow.g.cs
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\ChangeStatusWindow.baml

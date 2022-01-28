@@ -7,7 +7,7 @@ using System.Windows.Controls;
 
 namespace GAIManagment.ModuleCore.Domain
 {
-    public class NavService
+    public class NavController
     {
         private static Frame frameMain;
 

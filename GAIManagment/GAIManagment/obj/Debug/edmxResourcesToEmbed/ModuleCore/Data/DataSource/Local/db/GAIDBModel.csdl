@@ -33,6 +33,18 @@
     <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Licenses" Relationship="Self.LicenseToDriver" FromRole="Driver" ToRole="License" />
   </EntityType>
+  <EntityType Name="Fine">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LicenceNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Photo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Fine1" Relationship="Self.FK_Fine_Fine" FromRole="Fine" ToRole="Fine1" />
+    <NavigationProperty Name="Fine2" Relationship="Self.FK_Fine_Fine" FromRole="Fine1" ToRole="Fine" />
+  </EntityType>
   <EntityType Name="License">
     <Key>
       <PropertyRef Name="ID" />
@@ -43,7 +55,22 @@
     <Property Name="Categories" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="LicenseSeries" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="LicenseNumber" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_License_Status" FromRole="License" ToRole="Status" />
+    <NavigationProperty Name="LicenseStatusHistories" Relationship="Self.FK_LicenseStatusHistory_License" FromRole="License" ToRole="LicenseStatusHistory" />
     <NavigationProperty Name="Driver" Relationship="Self.LicenseToDriver" FromRole="License" ToRole="Driver" />
+  </EntityType>
+  <EntityType Name="LicenseStatusHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LicenseID" Type="Int32" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="License" Relationship="Self.FK_LicenseStatusHistory_License" FromRole="LicenseStatusHistory" ToRole="License" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_LicenseStatusHistory_Status" FromRole="LicenseStatusHistory" ToRole="Status" />
   </EntityType>
   <EntityType Name="RegionCode">
     <Key>
@@ -64,6 +91,15 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Users" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Licenses" Relationship="Self.FK_License_Status" FromRole="Status" ToRole="License" />
+    <NavigationProperty Name="LicenseStatusHistories" Relationship="Self.FK_LicenseStatusHistory_Status" FromRole="Status" ToRole="LicenseStatusHistory" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -99,20 +135,54 @@
     <Property Name="EngineType" Type="Int32" Nullable="false" />
     <Property Name="TypeOfDrive" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
-  <EntityType Name="Fine">
-    <Key>
-      <PropertyRef Name="ID" />
-      <PropertyRef Name="CarNum" />
-      <PropertyRef Name="Region" />
-      <PropertyRef Name="LicenceNum" />
-      <PropertyRef Name="Photo" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="CarNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="LicenceNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Photo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-  </EntityType>
+  <Association Name="FK_Fine_Fine">
+    <End Role="Fine" Type="Self.Fine" Multiplicity="1" />
+    <End Role="Fine1" Type="Self.Fine" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Fine">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Fine1">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_License_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="License" Type="Self.License" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="License">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LicenseStatusHistory_License">
+    <End Role="License" Type="Self.License" Multiplicity="1" />
+    <End Role="LicenseStatusHistory" Type="Self.LicenseStatusHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="License">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LicenseStatusHistory">
+        <PropertyRef Name="LicenseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LicenseStatusHistory_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="LicenseStatusHistory" Type="Self.LicenseStatusHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LicenseStatusHistory">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_User_Role">
     <End Role="Role" Type="Self.Role" Multiplicity="1" />
     <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -132,13 +202,31 @@
   <EntityContainer Name="VSpracticeEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CarColors" EntityType="Self.CarColor" />
     <EntitySet Name="Drivers" EntityType="Self.Driver" />
+    <EntitySet Name="Fines" EntityType="Self.Fine" />
     <EntitySet Name="Licenses" EntityType="Self.License" />
+    <EntitySet Name="LicenseStatusHistories" EntityType="Self.LicenseStatusHistory" />
     <EntitySet Name="RegionCodes" EntityType="Self.RegionCode" />
     <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Status" EntityType="Self.Status" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="Users" EntityType="Self.User" />
     <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
-    <EntitySet Name="Fines" EntityType="Self.Fine" />
+    <AssociationSet Name="FK_Fine_Fine" Association="Self.FK_Fine_Fine">
+      <End Role="Fine" EntitySet="Fines" />
+      <End Role="Fine1" EntitySet="Fines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_License_Status" Association="Self.FK_License_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="License" EntitySet="Licenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LicenseStatusHistory_License" Association="Self.FK_LicenseStatusHistory_License">
+      <End Role="License" EntitySet="Licenses" />
+      <End Role="LicenseStatusHistory" EntitySet="LicenseStatusHistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LicenseStatusHistory_Status" Association="Self.FK_LicenseStatusHistory_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="LicenseStatusHistory" EntitySet="LicenseStatusHistories" />
+    </AssociationSet>
     <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
       <End Role="Role" EntitySet="Roles" />
       <End Role="User" EntitySet="Users" />

@@ -106,10 +106,16 @@
     <Compile Include="ModuleCore\Data\DataSource\Local\db\License.cs">
       <DependentUpon>GAIDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModuleCore\Data\DataSource\Local\db\LicenseStatusHistory.cs">
+      <DependentUpon>GAIDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModuleCore\Data\DataSource\Local\db\RegionCode.cs">
       <DependentUpon>GAIDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ModuleCore\Data\DataSource\Local\db\Role.cs">
+      <DependentUpon>GAIDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleCore\Data\DataSource\Local\db\Status.cs">
       <DependentUpon>GAIDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ModuleCore\Data\DataSource\Local\db\sysdiagram.cs">
@@ -122,7 +128,8 @@
       <DependentUpon>GAIDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ModuleCore\Data\DataSource\Local\PracticeDAO.cs" />
-    <Compile Include="ModuleCore\Domain\NavService.cs" />
+    <Compile Include="ModuleCore\Domain\NavController.cs" />
+    <Compile Include="ModuleCore\Domain\Utils\LicenseExtensions.cs" />
     <Compile Include="ModuleCore\Presentation\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -132,6 +139,30 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ModuleDrivers\Presentation\Windows\AddEditDriverWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModuleLicenses\Presentation\Pages\LicensesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModuleLicenses\Presentation\Windows\CategoryDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModuleLicenses\Presentation\Windows\ChangeStatusWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModuleLicenses\Presentation\Windows\DriversDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModuleLicenses\Presentation\Windows\LicenseStatusHisoryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModuleLicenses\Presentation\Windows\RegLicenseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,6 +177,25 @@
     </Compile>
     <Compile Include="ModuleDrivers\Presentation\Windows\AddEditDriverWindow.xaml.cs">
       <DependentUpon>AddEditDriverWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleLicenses\Domain\Models\LicenseWithColorMark.cs" />
+    <Compile Include="ModuleLicenses\Presentation\Pages\LicensesPage.xaml.cs">
+      <DependentUpon>LicensesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleLicenses\Presentation\Windows\CategoryDialog.xaml.cs">
+      <DependentUpon>CategoryDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleLicenses\Presentation\Windows\ChangeStatusWindow.xaml.cs">
+      <DependentUpon>ChangeStatusWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleLicenses\Presentation\Windows\DriversDialog.xaml.cs">
+      <DependentUpon>DriversDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleLicenses\Presentation\Windows\LicenseStatusHisoryWindow.xaml.cs">
+      <DependentUpon>LicenseStatusHisoryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleLicenses\Presentation\Windows\RegLicenseWindow.xaml.cs">
+      <DependentUpon>RegLicenseWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ModuleMainMenu\Presentation\Pages\MainMenuPage.xaml.cs">
       <DependentUpon>MainMenuPage.xaml</DependentUpon>
@@ -184,6 +234,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ModuleCore\Data\DataSource\Local\db\GAIDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GAIDBModel.edmx</DependentUpon>
@@ -194,9 +247,6 @@
       <DependentUpon>GAIDBModel.edmx</DependentUpon>
       <LastGenOutput>GAIDBModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

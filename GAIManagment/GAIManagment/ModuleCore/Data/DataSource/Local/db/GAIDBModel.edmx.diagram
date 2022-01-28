@@ -4,16 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="14b3ffabd6ba4801878a5776b3e811ef" Name="Diagram1">
-        <EntityTypeShape EntityType="VSpracticeModel.CarColor" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VSpracticeModel.Driver" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="VSpracticeModel.License" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VSpracticeModel.RegionCode" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VSpracticeModel.Role" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="VSpracticeModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VSpracticeModel.User" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VSpracticeModel.Vehicle" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VSpracticeModel.Fine" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+      <Diagram DiagramId="deda310ce88c4651bf6de3b4229f8a97" Name="Diagram1">
+        <EntityTypeShape EntityType="VSpracticeModel.CarColor" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VSpracticeModel.Driver" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VSpracticeModel.Fine" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VSpracticeModel.License" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VSpracticeModel.LicenseStatusHistory" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VSpracticeModel.RegionCode" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VSpracticeModel.Role" Width="1.5" PointX="4.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VSpracticeModel.Status" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VSpracticeModel.sysdiagram" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VSpracticeModel.User" Width="1.5" PointX="7" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VSpracticeModel.Vehicle" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="VSpracticeModel.FK_Fine_Fine" ManuallyRouted="false" />
+        <AssociationConnector Association="VSpracticeModel.FK_License_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="VSpracticeModel.FK_LicenseStatusHistory_License" ManuallyRouted="false" />
+        <AssociationConnector Association="VSpracticeModel.FK_LicenseStatusHistory_Status" ManuallyRouted="false" />
         <AssociationConnector Association="VSpracticeModel.FK_User_Role" ManuallyRouted="false" />
         <AssociationConnector Association="VSpracticeModel.LicenseToDriver" ManuallyRouted="false" />
       </Diagram>

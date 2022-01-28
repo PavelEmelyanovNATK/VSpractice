@@ -27,12 +27,14 @@ namespace GAIManagment.ModuleCore.Data.DataSource.Local.db
     
         public virtual DbSet<CarColor> CarColors { get; set; }
         public virtual DbSet<Driver> Drivers { get; set; }
+        public virtual DbSet<Fine> Fines { get; set; }
         public virtual DbSet<License> Licenses { get; set; }
+        public virtual DbSet<LicenseStatusHistory> LicenseStatusHistories { get; set; }
         public virtual DbSet<RegionCode> RegionCodes { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Vehicle> Vehicles { get; set; }
-        public virtual DbSet<Fine> Fines { get; set; }
     }
 }

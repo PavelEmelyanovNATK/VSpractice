@@ -1,0 +1,58 @@
+﻿<Window x:Class="GAIManagment.ModuleLicenses.Presentation.Windows.RegLicenseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GAIManagment.ModuleLicenses.Presentation.Windows"
+        mc:Ignorable="d"
+        Title="RegLicenseWindow" Height="200" Width="550"
+        ResizeMode="NoResize">
+    <Grid>
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="ID: " TextAlignment="Right" Width="250"/>
+                <TextBlock x:Name="tbID" Width="250"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Дата окончания: " TextAlignment="Right" Width="250"/>
+                <DatePicker x:Name="dpExpire" Width="250"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Категории: " TextAlignment="Right" Width="250"/>
+                <TextBlock x:Name="tbCategories" Width="170"/>
+                <Button x:Name="btnAddCategory" Content="Добавить" Width="80" VerticalAlignment="Top" Click="btnAddCategory_Click"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Серия: " TextAlignment="Right" Width="250"/>
+                <TextBox x:Name="tbSeries" Width="250" MaxLines="1"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Номер: " TextAlignment="Right" Width="250"/>
+                <TextBox x:Name="tbNumber" Width="250" MaxLines="1"/>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock Text="Водитель: " TextAlignment="Right" Width="250"/>
+                <TextBlock x:Name="tbDriver" Width="170"/>
+                <Button x:Name="btnAddDriver" Content="Добавить" Width="80" VerticalAlignment="Top" Click="btnAddDriver_Click"/>
+            </StackPanel>
+
+            <Button 
+                x:Name="btnAction"
+                Click="btnAction_Click"
+                Content="Зарегистрировать"/>
+        </StackPanel>
+    </Grid>
+</Window>

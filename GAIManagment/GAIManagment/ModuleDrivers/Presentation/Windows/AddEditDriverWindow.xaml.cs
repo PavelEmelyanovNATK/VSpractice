@@ -41,6 +41,7 @@ namespace GAIManagment.ModuleDrivers.Presentation.Windows
             driver.PostCode = "1";
 
             btnAction.Content = "Добавить";
+            Title = "Добавление водителя";
 
             this.ShowDialog();
         }
@@ -52,6 +53,7 @@ namespace GAIManagment.ModuleDrivers.Presentation.Windows
             action = SaveAction;
 
             btnAction.Content = "Сохранить";
+            Title = "Редактирование информации о водителе";
 
             tbID.Text = "" + driver.ID;
             tbSurname.Text = driver.Surname;

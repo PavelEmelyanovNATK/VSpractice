@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\App.xaml
-111071004403
+121456142586
 2-813384907
-34-1649695621
+36899239232
 18-1402117900
-ModuleAuth\Presentation\Pages\AuthPage.xaml;ModuleCore\Presentation\Windows\MainWindow.xaml;ModuleDrivers\Presentation\Pages\DriversPage.xaml;ModuleDrivers\Presentation\Windows\AddEditDriverWindow.xaml;ModuleLicenses\Presentation\Pages\LicensesPage.xaml;ModuleLicenses\Presentation\Windows\CategoryDialog.xaml;ModuleLicenses\Presentation\Windows\ChangeStatusWindow.xaml;ModuleLicenses\Presentation\Windows\DriversDialog.xaml;ModuleLicenses\Presentation\Windows\LicenseStatusHisoryWindow.xaml;ModuleLicenses\Presentation\Windows\RegLicenseWindow.xaml;ModuleMainMenu\Presentation\Pages\MainMenuPage.xaml;
+ModuleAuth\Presentation\Pages\AuthPage.xaml;ModuleCore\Presentation\Windows\MainWindow.xaml;ModuleDrivers\Presentation\Pages\DriversPage.xaml;ModuleDrivers\Presentation\Windows\AddEditDriverWindow.xaml;ModuleLicenses\Presentation\Pages\LicensesPage.xaml;ModuleLicenses\Presentation\Windows\CategoryDialog.xaml;ModuleLicenses\Presentation\Windows\ChangeStatusWindow.xaml;ModuleLicenses\Presentation\Windows\DriversDialog.xaml;ModuleLicenses\Presentation\Windows\LicenseStatusHisoryWindow.xaml;ModuleLicenses\Presentation\Windows\RegLicenseWindow.xaml;ModuleMainMenu\Presentation\Pages\MainMenuPage.xaml;ModuleStatistic\Presentation\GivenLicensesStatiscs.xaml;
 
 True
 

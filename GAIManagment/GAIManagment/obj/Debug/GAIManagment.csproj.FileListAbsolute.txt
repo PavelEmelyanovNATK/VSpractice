@@ -50,3 +50,5 @@ C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Deb
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\LicenseStatusHisoryWindow.baml
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\ChangeStatusWindow.g.cs
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\ChangeStatusWindow.baml
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleStatistic\Presentation\GivenLicensesStatiscs.g.cs
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleStatistic\Presentation\GivenLicensesStatiscs.baml

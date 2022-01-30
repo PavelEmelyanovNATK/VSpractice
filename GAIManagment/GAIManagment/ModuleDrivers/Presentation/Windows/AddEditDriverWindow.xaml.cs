@@ -159,6 +159,11 @@ namespace GAIManagment.ModuleDrivers.Presentation.Windows
                     MessageBox.Show("Неверное соотношение сторон! Соотношение сторон должно быть 3:4!");
                     return;
                 }
+                if(image.StreamSource.Length > 2048)
+                {
+                    MessageBox.Show("Размер файла не должен превышать 2МБ!");
+                    return;
+                }
 
                 imgPhoto.Source = image;
                 imgPhoto.Tag = openFileDialog.SafeFileName;

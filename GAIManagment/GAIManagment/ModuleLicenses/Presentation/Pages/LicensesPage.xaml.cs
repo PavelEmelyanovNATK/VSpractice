@@ -3,6 +3,7 @@ using GAIManagment.ModuleCore.Data.DataSource.Local.db;
 using GAIManagment.ModuleCore.Domain;
 using GAIManagment.ModuleLicenses.Domain.Models;
 using GAIManagment.ModuleLicenses.Presentation.Windows;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -110,6 +111,51 @@ namespace GAIManagment.ModuleLicenses.Presentation.Pages
         {
             var changeStatusWindow = new ChangeStatusWindow((lvLicenses.SelectedItem as License).ID);
             changeStatusWindow.ShowDialog();
+        }
+
+        private void btnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            //PrintLicense();
+        }
+
+        private void PrintLicense()
+        {
+            var saveFileDialog = new SaveFileDialog();
+
+            saveFileDialog.Filter = ".JPG|*.jpg";
+            saveFileDialog.FileName = "Driver_License";
+
+            var printDialog = new PrintDialog();
+
+            if (printDialog.ShowDialog() == true)
+            {
+                var baseLicense = new BitmapImage(new Uri(Environment.CurrentDirectory + "/LicenseBase/driver_license_template.jpg"));
+                var licenseOutput = new DrawingVisual();
+                using (DrawingContext dc = licenseOutput.RenderOpen())
+                {
+                    dc.DrawImage(baseLicense, new Rect(new Size(1000, 667)));
+
+                    dc.DrawText(
+                        new FormattedText("ФАМИЛИЯ",
+                        System.Globalization.CultureInfo.CurrentCulture,
+                        FlowDirection.LeftToRight,
+                        new Typeface("Times New Roman"), 14, Brushes.Black
+                        ),
+                        new Point(330, 210)
+                    );
+
+                    dc.DrawText(
+                        new FormattedText("ИМЯ ОТЧЕСТВО",
+                        System.Globalization.CultureInfo.CurrentCulture,
+                        FlowDirection.LeftToRight,
+                        new Typeface("Times New Roman"), 14, Brushes.Black
+                        ),
+                        new Point(330, 265)
+                    );
+                }
+
+                printDialog.PrintVisual(licenseOutput, "Водительское удостоверение");
+            }
         }
     }
 }

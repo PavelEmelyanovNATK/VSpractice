@@ -170,6 +170,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ModuleStatistic\Presentation\GivenLicensesStatiscs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ModuleDrivers\Presentation\Pages\DriversPage.xaml.cs">
@@ -199,6 +203,10 @@
     </Compile>
     <Compile Include="ModuleMainMenu\Presentation\Pages\MainMenuPage.xaml.cs">
       <DependentUpon>MainMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleStatistic\Domain\GivenLicensesStatisticItem.cs" />
+    <Compile Include="ModuleStatistic\Presentation\GivenLicensesStatiscs.xaml.cs">
+      <DependentUpon>GivenLicensesStatiscs.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -247,6 +255,8 @@
       <DependentUpon>GAIDBModel.edmx</DependentUpon>
       <LastGenOutput>GAIDBModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="ModuleCore\Data\DataSource\Local\Resources\driver_license_template.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

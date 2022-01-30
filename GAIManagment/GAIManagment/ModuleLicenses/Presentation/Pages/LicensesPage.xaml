@@ -70,6 +70,11 @@
                 x:Name="btnHistory"
                 Content="История статусов"
                 Click="btnHistory_Click"/>
+
+            <Button 
+                x:Name="btnPrint"
+                Content="Распечатать"
+                Click="btnPrint_Click"/>
         </StackPanel>
     </Grid>
 </Page>

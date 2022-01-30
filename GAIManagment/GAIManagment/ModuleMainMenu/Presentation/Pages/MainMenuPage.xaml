@@ -9,10 +9,11 @@
       Title="MainMenuPage">
 
     <Grid Background="White">
-        <StackPanel>
+        <StackPanel Margin="20">
             <Button Content="Водители" Click="DriversButton_Click"/>
             <Button Content="Лицензии" Click="LicensesButton_Click"/>
             <Button Content="Штрафы"/>
+            <Button Content="Статистика выданных удостоверений" Click="GivenLicensesStatistics_Click"/>
         </StackPanel>
     </Grid>
 </Page>

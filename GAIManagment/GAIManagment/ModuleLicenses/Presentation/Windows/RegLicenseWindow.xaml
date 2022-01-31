@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:GAIManagment.ModuleLicenses.Presentation.Windows"
         mc:Ignorable="d"
         Title="RegLicenseWindow" Height="200" Width="550"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel
             HorizontalAlignment="Center"

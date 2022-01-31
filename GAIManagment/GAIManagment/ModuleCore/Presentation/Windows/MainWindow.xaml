@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GAIManagment"
         mc:Ignorable="d"
-         Title="ГИБДД" Height="450" Width="800">
+         Title="ГИБДД" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
     <Frame
         x:Name="frameMain"
         NavigationUIVisibility="Hidden"

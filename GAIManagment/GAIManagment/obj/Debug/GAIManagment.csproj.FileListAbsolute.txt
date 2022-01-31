@@ -8,7 +8,6 @@ C:\Users\pemel\source\repos\GAIManagment\GAIManagment\obj\Debug\App.g.cs
 C:\Users\pemel\source\repos\GAIManagment\GAIManagment\obj\Debug\GAIManagment_Content.g.cs
 C:\Users\pemel\source\repos\GAIManagment\GAIManagment\obj\Debug\GAIManagment_MarkupCompile.cache
 C:\Users\pemel\source\repos\GAIManagment\GAIManagment\obj\Debug\GAIManagment_MarkupCompile.lref
-C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\GAIManagment.csproj.AssemblyReference.cache
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleAuth\Presentation\Pages\AuthPage.g.cs
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleCore\Presentation\Windows\MainWindow.g.cs
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleDrivers\Presentation\Pages\DriversPage.g.cs
@@ -50,5 +49,8 @@ C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Deb
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\LicenseStatusHisoryWindow.baml
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\ChangeStatusWindow.g.cs
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\ChangeStatusWindow.baml
-C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleStatistic\Presentation\GivenLicensesStatiscs.g.cs
-C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleStatistic\Presentation\GivenLicensesStatiscs.baml
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleStatistic\Presentation\GivenLicensesStatiscsPage.g.cs
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleStatistic\Presentation\TakenLicensesStatisticsPage.g.cs
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleStatistic\Presentation\GivenLicensesStatiscsPage.baml
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleStatistic\Presentation\TakenLicensesStatisticsPage.baml
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\GAIManagment.csproj.AssemblyReference.cache

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:GAIManagment.ModuleLicenses.Presentation.Windows" xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Категории" Height="160" Width="380"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="LicenseStatusHisoryWindow" Height="450" Width="500"
         Loaded="Window_Loaded"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <ListView
             x:Name="lvHistory"

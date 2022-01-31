@@ -1,4 +1,5 @@
-﻿using GAIManagment.ModuleCore.Domain;
+﻿using GAIManagment.ModuleCore.Data.DataSource.Local;
+using GAIManagment.ModuleCore.Domain;
 using GAIManagment.ModuleMainMenu.Presentation.Pages;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,14 @@ namespace GAIManagment.ModuleAuth.Presentation.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavController.SetPage(new MainMenuPage());
+            if(PracticeDAO.Context.Users.Any(u => u.Login == tbLogin.Text && u.Password == tbPassword.Password && u.RoleID == 1))
+            {
+                NavController.SetPage(new MainMenuPage());
+            }
+            else
+            {
+                MessageBox.Show("Неверный логин или пароль!");
+            }
         }
     }
 }

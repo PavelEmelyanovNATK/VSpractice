@@ -23,7 +23,8 @@ namespace GAIManagment.ModuleCore.Domain.Utils
             {
                 License = self,
                 Status = status,
-                Description = description
+                Description = description,
+                Date = DateTime.Now
             });
         }
     }

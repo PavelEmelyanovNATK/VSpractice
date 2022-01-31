@@ -14,12 +14,12 @@
             VerticalAlignment="Center">
             <StackPanel>
                 <TextBlock Text="Логин"/>
-                <TextBox Width="250"/>
+                <TextBox x:Name="tbLogin" Width="250"/>
             </StackPanel>
 
             <StackPanel>
                 <TextBlock Text="Пароль"/>
-                <TextBox Width="250"/>
+                <PasswordBox x:Name="tbPassword" Width="250"/>
             </StackPanel>
 
             <Button Content="Войти" Click="Button_Click"/>

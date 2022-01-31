@@ -47,7 +47,7 @@ namespace GAIManagment.ModuleStatistic.Presentation
 
         private void RefreshStatistics()
         {
-            var newStatistics = new List<GivenLicensesStatisticItem>();
+            var newStatistics = new List<MonthsLicensesStatisticItem>();
             var selectedValue = cbYears.SelectedItem as String;
 
             if (selectedValue == "Все")
@@ -60,9 +60,9 @@ namespace GAIManagment.ModuleStatistic.Presentation
             }
         }
 
-        private List<GivenLicensesStatisticItem> GetAllStatistics()
+        private List<MonthsLicensesStatisticItem> GetAllStatistics()
         {
-            var newStatistics = new List<GivenLicensesStatisticItem>();
+            var newStatistics = new List<MonthsLicensesStatisticItem>();
             var allLicenses = PracticeDAO.Context.Licenses.ToArray();
 
             var sortedLicenses = new Dictionary<int, List<License>>();
@@ -75,7 +75,7 @@ namespace GAIManagment.ModuleStatistic.Presentation
 
             foreach (var item in sortedLicenses)
             {
-                var statisticItem = new GivenLicensesStatisticItem { Year = item.Key };
+                var statisticItem = new MonthsLicensesStatisticItem { Year = item.Key };
 
                 foreach (var license in item.Value)
                 {
@@ -111,9 +111,9 @@ namespace GAIManagment.ModuleStatistic.Presentation
             return newStatistics;
         }
 
-        private List<GivenLicensesStatisticItem> GetStatisticByYear()
+        private List<MonthsLicensesStatisticItem> GetStatisticByYear()
         {
-            var newStatistics = new List<GivenLicensesStatisticItem>();
+            var newStatistics = new List<MonthsLicensesStatisticItem>();
 
             var year = Convert.ToInt32(cbYears.SelectedItem);
             var licenses = PracticeDAO.Context.Licenses.Where(l => l.LicenceDate.Year == year).ToArray();
@@ -124,7 +124,7 @@ namespace GAIManagment.ModuleStatistic.Presentation
                 return newStatistics;
             }
 
-            var statisticItem = new GivenLicensesStatisticItem { Year = licenses[0].LicenceDate.Year };
+            var statisticItem = new MonthsLicensesStatisticItem { Year = licenses[0].LicenceDate.Year };
 
             foreach (var license in licenses)
             {

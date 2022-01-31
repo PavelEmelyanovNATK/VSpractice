@@ -170,7 +170,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ModuleStatistic\Presentation\GivenLicensesStatiscs.xaml">
+    <Page Include="ModuleStatistic\Presentation\GivenLicensesStatiscsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModuleStatistic\Presentation\TakenLicensesStatisticsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -204,9 +208,13 @@
     <Compile Include="ModuleMainMenu\Presentation\Pages\MainMenuPage.xaml.cs">
       <DependentUpon>MainMenuPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ModuleStatistic\Domain\GivenLicensesStatisticItem.cs" />
-    <Compile Include="ModuleStatistic\Presentation\GivenLicensesStatiscs.xaml.cs">
-      <DependentUpon>GivenLicensesStatiscs.xaml</DependentUpon>
+    <Compile Include="ModuleStatistic\Domain\MonthsLicensesStatisticItem.cs" />
+    <Compile Include="ModuleStatistic\Domain\YearsLicensesStatisticItem.cs" />
+    <Compile Include="ModuleStatistic\Presentation\GivenLicensesStatiscsPage.xaml.cs">
+      <DependentUpon>GivenLicensesStatiscsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleStatistic\Presentation\TakenLicensesStatisticsPage.xaml.cs">
+      <DependentUpon>TakenLicensesStatisticsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

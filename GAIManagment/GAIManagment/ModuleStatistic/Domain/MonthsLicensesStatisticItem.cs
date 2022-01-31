@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GAIManagment.ModuleStatistic.Domain
 {
-    class GivenLicensesStatisticItem
+    public class MonthsLicensesStatisticItem
     {
         public int Year { get; set; }
         public int Jan { get; set; }

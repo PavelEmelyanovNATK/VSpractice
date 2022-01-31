@@ -43,5 +43,10 @@ namespace GAIManagment.ModuleMainMenu.Presentation.Pages
         {
             NavController.Navigate(new GivenLicensesStatistics());
         }
+
+        private void TakenLicensesStatistics_Click(object sender, RoutedEventArgs e)
+        {
+            NavController.Navigate(new TakenLicensesStatisticsPage());
+        }
     }
 }

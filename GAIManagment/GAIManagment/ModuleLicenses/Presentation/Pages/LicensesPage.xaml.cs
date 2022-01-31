@@ -111,6 +111,7 @@ namespace GAIManagment.ModuleLicenses.Presentation.Pages
         {
             var changeStatusWindow = new ChangeStatusWindow((lvLicenses.SelectedItem as License).ID);
             changeStatusWindow.ShowDialog();
+            RefreshLicenses();
         }
 
         private void btnPrint_Click(object sender, RoutedEventArgs e)

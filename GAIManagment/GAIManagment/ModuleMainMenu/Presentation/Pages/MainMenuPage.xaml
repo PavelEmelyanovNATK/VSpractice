@@ -14,6 +14,7 @@
             <Button Content="Лицензии" Click="LicensesButton_Click"/>
             <Button Content="Штрафы"/>
             <Button Content="Статистика выданных удостоверений" Click="GivenLicensesStatistics_Click"/>
+            <Button Content="Статистика изъятых удостоверений" Click="TakenLicensesStatistics_Click"/>
         </StackPanel>
     </Grid>
 </Page>

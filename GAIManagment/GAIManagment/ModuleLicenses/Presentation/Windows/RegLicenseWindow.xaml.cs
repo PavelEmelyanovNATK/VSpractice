@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 namespace GAIManagment.ModuleLicenses.Presentation.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для RegLicenseWindow.xaml
+    /// Диалоговое окно регистрации нового удостоверения.
     /// </summary>
     public partial class RegLicenseWindow : Window
     {
@@ -36,6 +36,7 @@ namespace GAIManagment.ModuleLicenses.Presentation.Windows
             if (category is null) return;
             if (tbCategories.Text.Contains(category)) return;
 
+            //Добавление и сортировка категорий
             var categoriesList = tbCategories.Text.Replace(" ","").Split(',').ToList();
             categoriesList.Remove("");
             categoriesList.Add(category);
@@ -60,6 +61,7 @@ namespace GAIManagment.ModuleLicenses.Presentation.Windows
             }
             catch (Exception ex)
             {
+                PracticeDAO.Refresh();
                 MessageBox.Show(ex.Message);
             }
         }
@@ -78,8 +80,7 @@ namespace GAIManagment.ModuleLicenses.Presentation.Windows
         {
             if (dpExpire.SelectedDate is null)
             {
-                MessageBox.Show("Вы не выбрали дату истечения!");
-                return;
+                throw new Exception("Вы не выбрали дату истечения!");
             }
 
             var license = new License();

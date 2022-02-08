@@ -19,8 +19,5 @@ namespace GAIManagment.ModuleCore.Data.DataSource.Local.db
         public string Region { get; set; }
         public string LicenceNum { get; set; }
         public string Photo { get; set; }
-    
-        public virtual Fine Fine1 { get; set; }
-        public virtual Fine Fine2 { get; set; }
     }
 }

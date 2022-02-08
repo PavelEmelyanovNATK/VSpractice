@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace GAIManagment.ModuleLicenses.Presentation.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для CategoryDialog.xaml
+    /// Диалоговое окно выбора категории удостоверения.
     /// </summary>
     public partial class CategoryDialog : Window
     {
@@ -24,6 +24,10 @@ namespace GAIManagment.ModuleLicenses.Presentation.Windows
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Открывает диалоговое окно выбора категории и возрващает выбранную категорию.
+        /// </summary>
+        /// <returns></returns>
         public new string ShowDialog()
         {
             base.ShowDialog();

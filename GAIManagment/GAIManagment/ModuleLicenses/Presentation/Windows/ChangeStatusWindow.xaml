@@ -8,7 +8,8 @@
         Title="Смена статуса" Height="400" Width="400"
         ResizeMode="NoResize"
         Loaded="Window_Loaded"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Icon="gibdd_logo.png"
+        Style="{StaticResource Window}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -30,7 +31,17 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <TextBox x:Name="tbDescription" TextWrapping="Wrap"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock 
+                Grid.Row="0"
+                Text="Комментарий: "/>
+            <TextBox 
+                Grid.Row="1"
+                x:Name="tbDescription" TextWrapping="Wrap"/>
         </Grid>
 
         <Grid Grid.Row="2">

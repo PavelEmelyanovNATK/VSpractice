@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\App.xaml
-131773228794
-2-813384907
-382060987168
-18-1402117900
-ModuleAuth\Presentation\Pages\AuthPage.xaml;ModuleCore\Presentation\Windows\MainWindow.xaml;ModuleDrivers\Presentation\Pages\DriversPage.xaml;ModuleDrivers\Presentation\Windows\AddEditDriverWindow.xaml;ModuleLicenses\Presentation\Pages\LicensesPage.xaml;ModuleLicenses\Presentation\Windows\CategoryDialog.xaml;ModuleLicenses\Presentation\Windows\ChangeStatusWindow.xaml;ModuleLicenses\Presentation\Windows\DriversDialog.xaml;ModuleLicenses\Presentation\Windows\LicenseStatusHisoryWindow.xaml;ModuleLicenses\Presentation\Windows\RegLicenseWindow.xaml;ModuleMainMenu\Presentation\Pages\MainMenuPage.xaml;ModuleStatistic\Presentation\GivenLicensesStatiscsPage.xaml;ModuleStatistic\Presentation\TakenLicensesStatisticsPage.xaml;
+14-341820710
+2-1686017449
+39-1718678226
+24-275476983
+ModuleAuth\Presentation\Pages\AuthPage.xaml;ModuleCore\Presentation\Windows\MainWindow.xaml;ModuleDrivers\Presentation\Pages\DriversPage.xaml;ModuleDrivers\Presentation\Windows\AddEditDriverWindow.xaml;ModuleLicenses\Presentation\Pages\LicensesPage.xaml;ModuleLicenses\Presentation\Windows\CategoryDialog.xaml;ModuleLicenses\Presentation\Windows\ChangeStatusWindow.xaml;ModuleLicenses\Presentation\Windows\DriverLicensesWindow.xaml;ModuleLicenses\Presentation\Windows\DriversDialog.xaml;ModuleLicenses\Presentation\Windows\LicenseStatusHisoryWindow.xaml;ModuleLicenses\Presentation\Windows\RegLicenseWindow.xaml;ModuleMainMenu\Presentation\Pages\MainMenuPage.xaml;ModuleStatistic\Presentation\GivenLicensesStatiscsPage.xaml;ModuleStatistic\Presentation\TakenLicensesStatisticsPage.xaml;
 
 False
 

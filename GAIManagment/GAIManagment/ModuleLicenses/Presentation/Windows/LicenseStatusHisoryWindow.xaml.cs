@@ -1,4 +1,5 @@
-﻿using GAIManagment.ModuleCore.Data.DataSource.Local.db;
+﻿using GAIManagment.ModuleCore.Data.DataSource.Local;
+using GAIManagment.ModuleCore.Data.DataSource.Local.db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,24 +17,31 @@ using System.Windows.Shapes;
 namespace GAIManagment.ModuleLicenses.Presentation.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для LicenseStatusHisoryWindow.xaml
+    /// Окно просмотра истории изменения статусов удосоверения.
     /// </summary>
     public partial class LicenseStatusHisoryWindow : Window
     {
-        IEnumerable<LicenseStatusHistory> history;
+        private int licenseId { get; set; }
         public LicenseStatusHisoryWindow()
         {
             InitializeComponent();
         }
 
-        public LicenseStatusHisoryWindow(IEnumerable<LicenseStatusHistory> history) : this()
+        public LicenseStatusHisoryWindow(int licenseId) : this()
         {
-            this.history = history;
+            this.licenseId = licenseId;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            lvHistory.ItemsSource = history;
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
+            var license = PracticeDAO.Context.Licenses.Find(licenseId);
+            Title = $"История изменения статусов лицензии {license.LicenseSeries} {license.LicenseNumber}";
+            lvHistory.ItemsSource = license.LicenseStatusHistories.ToArray();
         }
     }
 }

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace VIN_LIB
 {
+    /// <summary>
+    /// Содержит функции для валидации, а также других действий для VIN.
+    /// </summary>
     public class Class1
     {
         public Class1()
@@ -278,8 +281,8 @@ namespace VIN_LIB
                 modelYears.Add((char)i, year);
                 year++;
             }
-            //Проходимся от 0 до 9
-            for (int i = '0'; i <= '9'; i++)
+            //Проходимся от 1 до 9
+            for (int i = '1'; i <= '9'; i++)
             {
                 modelYears.Add((char)i, year);
                 year++;

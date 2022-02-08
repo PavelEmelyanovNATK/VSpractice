@@ -54,3 +54,7 @@ C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Deb
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleStatistic\Presentation\GivenLicensesStatiscsPage.baml
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleStatistic\Presentation\TakenLicensesStatisticsPage.baml
 C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\GAIManagment.csproj.AssemblyReference.cache
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\DriverLicensesWindow.g.cs
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\ModuleLicenses\Presentation\Windows\DriverLicensesWindow.baml
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\App.baml
+C:\Users\pemel\Documents\VSPractice\VSpractice\GAIManagment\GAIManagment\obj\Debug\GAIManagment.csproj.SuggestedBindingRedirects.cache

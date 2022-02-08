@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace GAIManagment.ModuleLicenses.Presentation.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для DriversDialog.xaml
+    /// Диаологовое окно выбора водителя.
     /// </summary>
     public partial class DriversDialog : Window
     {
@@ -26,6 +26,10 @@ namespace GAIManagment.ModuleLicenses.Presentation.Windows
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Открывает диаологовое окно выбора водителя. Возвращает выбранного водителя.
+        /// </summary>
+        /// <returns></returns>
         public new int ShowDialog()
         {
             base.ShowDialog();

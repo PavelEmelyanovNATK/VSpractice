@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace GAIManagment.ModuleStatistic.Domain
 {
+    /// <summary>
+    /// Сущность для отображение в таблице статистики. Содержит год и числовое значение для каждого месяца.
+    /// </summary>
     public class MonthsLicensesStatisticItem
     {
         public int Year { get; set; }

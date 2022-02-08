@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -20,7 +21,7 @@ using System.Windows.Shapes;
 namespace GAIManagment.ModuleStatistic.Presentation
 {
     /// <summary>
-    /// Логика взаимодействия для GivenLicensesStatiscs.xaml
+    /// Страница со стастистикой выданных удостоверений.
     /// </summary>
     public partial class GivenLicensesStatistics : Page
     {
@@ -31,6 +32,70 @@ namespace GAIManagment.ModuleStatistic.Presentation
             FillYearsCombobox();
         }
 
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavController.GoBack();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshStatistics();
+            InitializeChart();
+        }
+
+        private void cbYears_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            RefreshStatistics();
+            UpdateChart();
+        }
+
+        private void InitializeChart()
+        {
+            UpdateChart();
+        }
+
+        private void UpdateChart()
+        {
+            chartGivenLicenses.Series.Clear();
+
+            if (lvLicenses.Items?.Count == 0) return;
+
+            chartGivenLicenses.ChartAreas.Clear();
+
+            var chartArea = new ChartArea("Main");
+
+            chartArea.AxisX.TextOrientation = TextOrientation.Rotated90;
+            chartGivenLicenses.ChartAreas.Add(chartArea);
+
+            Series curSeries;
+
+            foreach (MonthsLicensesStatisticItem item in lvLicenses.Items)
+            {
+                curSeries = new Series
+                {
+                    Name = item.Year.ToString(),
+                    IsValueShownAsLabel = true,
+                    ChartType = SeriesChartType.Line
+                };
+
+                curSeries.BorderWidth = 2;
+
+                chartGivenLicenses.Series.Add(curSeries);
+
+                curSeries.Points.AddXY("Январь", item.Jan);
+                curSeries.Points.AddXY("Февраль", item.Feb);
+                curSeries.Points.AddXY("Март", item.Mar);
+                curSeries.Points.AddXY("Апрель", item.Apr);
+                curSeries.Points.AddXY("Май", item.May);
+                curSeries.Points.AddXY("Июнь", item.Jun);
+                curSeries.Points.AddXY("Июль", item.Jul);
+                curSeries.Points.AddXY("Август", item.Aug);
+                curSeries.Points.AddXY("Сентябрь", item.Sep);
+                curSeries.Points.AddXY("Октябрь", item.Oct);
+                curSeries.Points.AddXY("Ноябрь", item.Nov);
+                curSeries.Points.AddXY("Декабрь", item.Dec);                
+            }
+        }
         private void FillYearsCombobox()
         {
             var yearsList = new List<String>();
@@ -47,7 +112,6 @@ namespace GAIManagment.ModuleStatistic.Presentation
 
         private void RefreshStatistics()
         {
-            var newStatistics = new List<MonthsLicensesStatisticItem>();
             var selectedValue = cbYears.SelectedItem as String;
 
             if (selectedValue == "Все")
@@ -60,6 +124,10 @@ namespace GAIManagment.ModuleStatistic.Presentation
             }
         }
 
+        /// <summary>
+        /// Возвращает список всей статистики по всем годам.
+        /// </summary>
+        /// <returns></returns>
         private List<MonthsLicensesStatisticItem> GetAllStatistics()
         {
             var newStatistics = new List<MonthsLicensesStatisticItem>();
@@ -111,6 +179,10 @@ namespace GAIManagment.ModuleStatistic.Presentation
             return newStatistics;
         }
 
+        /// <summary>
+        /// Возвращает статистику по определённому году
+        /// </summary>
+        /// <returns></returns>
         private List<MonthsLicensesStatisticItem> GetStatisticByYear()
         {
             var newStatistics = new List<MonthsLicensesStatisticItem>();
@@ -157,21 +229,6 @@ namespace GAIManagment.ModuleStatistic.Presentation
             newStatistics.Add(statisticItem);
 
             return newStatistics;
-        }
-
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            NavController.GoBack();
-        }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            RefreshStatistics();
-        }
-
-        private void cbYears_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            RefreshStatistics();
         }
     }
 }

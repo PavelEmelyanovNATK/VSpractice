@@ -8,6 +8,9 @@ using System.Windows.Media;
 
 namespace GAIManagment.ModuleLicenses.Domain.Models
 {
+    /// <summary>
+    /// Вспомогательная сущность для установки цветового маркера в списке удостоверений.
+    /// </summary>
     public class LicenseWithColorMark : License
     {
         public LicenseWithColorMark(License license)

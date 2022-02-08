@@ -20,7 +20,7 @@ using System.Windows.Shapes;
 namespace GAIManagment.ModuleMainMenu.Presentation.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainMenuPage.xaml
+    /// Страница главного меню.
     /// </summary>
     public partial class MainMenuPage : Page
     {

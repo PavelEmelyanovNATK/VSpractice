@@ -8,17 +8,17 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DriversPage">
 
-    <Grid Background="White">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <StackPanel
-            Grid.Row="0"
-            Orientation="Horizontal">
-            <Button Content="Назад" Click="BackButton_Click"/>
-        </StackPanel>
+        <Grid
+            Grid.Row="0">
+            <Button Content="Назад" Click="BackButton_Click" HorizontalAlignment="Left"/>
+            <TextBlock Text="Водители" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
 
         <ListView
             x:Name="lvDrivers"
@@ -58,7 +58,14 @@
             <Button 
                 x:Name="btnDelete"
                 Content="Удалить"
-                Click="btnDelete_Click"/>
+                Click="btnDelete_Click"
+                Style="{StaticResource NegativeButton}"/>
+
+            <Button 
+                x:Name="btnLicenses"
+                Content="Удостоверения"
+                Click="btnLicenses_Click"
+                Margin="40,0"/>
         </StackPanel>
     </Grid>
 </Page>

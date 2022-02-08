@@ -4,6 +4,58 @@
              xmlns:local="clr-namespace:GAIManagment"
              StartupUri="ModuleCore/Presentation/Windows/MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="NegativeButton" TargetType="Button">
+            <Style.Setters>
+                <Setter Property="Background" Value="#ffE0A9AF"/>
+            </Style.Setters>
+        </Style>
+
+        <Style TargetType="Button">
+            <Style.Setters>
+                <Setter Property="Background" Value="#ffB5D5CA"/>
+            </Style.Setters>
+        </Style>
+
+        <Style x:Key="Window" TargetType="Window">
+            <Style.Setters>
+                <Setter Property="Background" Value="#ffD1EEFC"/>
+            </Style.Setters>
+        </Style>
+
+        <Style TargetType="TabControl">
+            <Style.Setters>
+                <Setter Property="Background" Value="#ffD1EEFC"/>
+            </Style.Setters>
+        </Style>
+
+        <Style TargetType="ListView">
+            <Style.Setters>
+                <Setter Property="Background" Value="#ffFFFCD6"/>
+            </Style.Setters>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Style.Setters>
+                <Setter Property="Background" Value="#ffFFFCD6"/>
+            </Style.Setters>
+        </Style>
+
+        <Style TargetType="DatePicker">
+            <Style.Setters>
+                <Setter Property="Background" Value="#ffFFFCD6"/>
+            </Style.Setters>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Style.Setters>
+                <Setter Property="Background" Value="#ffFFFCD6"/>
+            </Style.Setters>
+        </Style>
+
+        <Style TargetType="PasswordBox">
+            <Style.Setters>
+                <Setter Property="Background" Value="#ffFFFCD6"/>
+            </Style.Setters>
+        </Style>
     </Application.Resources>
 </Application>

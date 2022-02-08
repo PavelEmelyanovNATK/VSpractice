@@ -20,7 +20,7 @@ using System.Windows.Shapes;
 namespace GAIManagment
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Главное окно приложения.
     /// </summary>
     public partial class MainWindow : Window
     {

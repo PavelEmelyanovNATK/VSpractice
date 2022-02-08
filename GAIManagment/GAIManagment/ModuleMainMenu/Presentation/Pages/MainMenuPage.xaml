@@ -8,13 +8,13 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainMenuPage">
 
-    <Grid Background="White">
+    <Grid>
         <StackPanel Margin="20">
-            <Button Content="Водители" Click="DriversButton_Click"/>
-            <Button Content="Лицензии" Click="LicensesButton_Click"/>
-            <Button Content="Штрафы"/>
-            <Button Content="Статистика выданных удостоверений" Click="GivenLicensesStatistics_Click"/>
-            <Button Content="Статистика изъятых удостоверений" Click="TakenLicensesStatistics_Click"/>
+            <Button Content="Водители" Click="DriversButton_Click" Height="30" Margin="0,5"/>
+            <Button Content="Удостоверения" Click="LicensesButton_Click" Height="30" Margin="0,5"/>
+
+            <Button Content="Статистика выданных удостоверений" Click="GivenLicensesStatistics_Click" Height="30" Margin="0,5"/>
+            <Button Content="Статистика изъятых удостоверений" Click="TakenLicensesStatistics_Click" Height="30" Margin="0,5"/>
         </StackPanel>
     </Grid>
 </Page>

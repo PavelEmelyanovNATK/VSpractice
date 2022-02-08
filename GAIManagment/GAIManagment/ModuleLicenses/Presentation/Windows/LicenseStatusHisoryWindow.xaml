@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GAIManagment.ModuleLicenses.Presentation.Windows"
         mc:Ignorable="d"
-        Title="LicenseStatusHisoryWindow" Height="450" Width="500"
+        Title="История статусов удосоверения" Height="450" Width="500"
         Loaded="Window_Loaded"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Icon="gibdd_logo.png"
+        Style="{StaticResource Window}">
     <Grid>
         <ListView
             x:Name="lvHistory"

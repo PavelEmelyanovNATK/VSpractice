@@ -135,18 +135,6 @@
           <Property Name="EngineType" Type="int" Nullable="false" />
           <Property Name="TypeOfDrive" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Fine_Fine">
-          <End Role="Fine" Type="Self.Fine" Multiplicity="1" />
-          <End Role="Fine1" Type="Self.Fine" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Fine">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Fine1">
-              <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_License_Status">
           <End Role="Status" Type="Self.Status" Multiplicity="1" />
           <End Role="License" Type="Self.License" Multiplicity="*" />
@@ -160,7 +148,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LicenseStatusHistory_License">
-          <End Role="License" Type="Self.License" Multiplicity="1" />
+          <End Role="License" Type="Self.License" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="LicenseStatusHistory" Type="Self.LicenseStatusHistory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="License">
@@ -172,7 +162,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LicenseStatusHistory_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Status" Type="Self.Status" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="LicenseStatusHistory" Type="Self.LicenseStatusHistory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Status">
@@ -184,7 +176,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LicenseToDriver_Driver">
-          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="LicenseToDriver" Type="Self.LicenseToDriver" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Driver">
@@ -196,7 +190,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LicenseToDriver_License">
-          <End Role="License" Type="Self.License" Multiplicity="1" />
+          <End Role="License" Type="Self.License" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="LicenseToDriver" Type="Self.LicenseToDriver" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="License">
@@ -232,10 +228,6 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Fine_Fine" Association="Self.FK_Fine_Fine">
-            <End Role="Fine" EntitySet="Fine" />
-            <End Role="Fine1" EntitySet="Fine" />
-          </AssociationSet>
           <AssociationSet Name="FK_License_Status" Association="Self.FK_License_Status">
             <End Role="Status" EntitySet="Status" />
             <End Role="License" EntitySet="License" />
@@ -308,8 +300,6 @@
           <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LicenceNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Photo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Fine1" Relationship="Self.FK_Fine_Fine" FromRole="Fine" ToRole="Fine1" />
-          <NavigationProperty Name="Fine2" Relationship="Self.FK_Fine_Fine" FromRole="Fine1" ToRole="Fine" />
         </EntityType>
         <EntityType Name="License">
           <Key>
@@ -401,18 +391,6 @@
           <Property Name="EngineType" Type="Int32" Nullable="false" />
           <Property Name="TypeOfDrive" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Fine_Fine">
-          <End Role="Fine" Type="Self.Fine" Multiplicity="1" />
-          <End Role="Fine1" Type="Self.Fine" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Fine">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Fine1">
-              <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_License_Status">
           <End Role="Status" Type="Self.Status" Multiplicity="1" />
           <End Role="License" Type="Self.License" Multiplicity="*" />
@@ -426,7 +404,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LicenseStatusHistory_License">
-          <End Role="License" Type="Self.License" Multiplicity="1" />
+          <End Role="License" Type="Self.License" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="LicenseStatusHistory" Type="Self.LicenseStatusHistory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="License">
@@ -438,7 +418,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LicenseStatusHistory_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Status" Type="Self.Status" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="LicenseStatusHistory" Type="Self.LicenseStatusHistory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Status">
@@ -477,10 +459,6 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
-          <AssociationSet Name="FK_Fine_Fine" Association="Self.FK_Fine_Fine">
-            <End Role="Fine" EntitySet="Fines" />
-            <End Role="Fine1" EntitySet="Fines" />
-          </AssociationSet>
           <AssociationSet Name="FK_License_Status" Association="Self.FK_License_Status">
             <End Role="Status" EntitySet="Status" />
             <End Role="License" EntitySet="Licenses" />

@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GAIManagment.ModuleLicenses.Presentation.Windows"
         mc:Ignorable="d"
-        Title="DriversDialog" Height="300" Width="350"
+        Title="Водители" Height="300" Width="350"
         ResizeMode="NoResize"
         Loaded="Window_Loaded"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Icon="gibdd_logo.png"
+        Style="{StaticResource Window}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

@@ -7,12 +7,15 @@ using System.Threading.Tasks;
 
 namespace REG_MARK_LIB
 {
-    class Class1
+    /// <summary>
+    /// Содержит функции для валидации, а также других действий для номеров автомобилей.
+    /// </summary>
+    public class Class1
     {
         /// <summary>
         /// Буквы, разрешённые в номере
         /// </summary>
-        string accessedSimbols = "ABEKMHOPCTYX";
+        string accessedSimbols = "ABEKMHOPCTXY";
 
         /// <summary>
         /// Правило для валидации номера

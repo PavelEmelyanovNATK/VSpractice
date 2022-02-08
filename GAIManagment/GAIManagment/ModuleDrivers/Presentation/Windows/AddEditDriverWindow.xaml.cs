@@ -19,7 +19,7 @@ using System.Windows.Shapes;
 namespace GAIManagment.ModuleDrivers.Presentation.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для AddEditDriverWindow.xaml
+    /// Диалоговое окно для добавления / редактирования водителя.
     /// </summary>
     public partial class AddEditDriverWindow : Window
     {
@@ -32,6 +32,47 @@ namespace GAIManagment.ModuleDrivers.Presentation.Windows
             InitializeComponent();
         }
 
+        private void btnAction_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                action?.Invoke();
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnPickPhoto_Click(object sender, RoutedEventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JPG|*.jpg|JPEG|*.jpeg|PNG|*.png";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                var image = new BitmapImage(new Uri(openFileDialog.FileName));
+
+                if (!Check34Res((int)image.Height, (int)image.Width))
+                {
+                    MessageBox.Show("Неверное соотношение сторон! Соотношение сторон должно быть 3:4!");
+                    return;
+                }
+
+                imgPhoto.Source = image;
+                imgPhoto.Tag = openFileDialog.SafeFileName;
+            }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            imgPhoto.Source = null;
+        }
+
+        /// <summary>
+        /// Открывает диалоговое окно для создания и добавления водителя в систему.
+        /// </summary>
         public void OpenForAdd()
         {
             driver = new Driver();
@@ -46,6 +87,9 @@ namespace GAIManagment.ModuleDrivers.Presentation.Windows
             this.ShowDialog();
         }
 
+        /// <summary>
+        /// Открывает диалоговое окно для редактирования информации о водителе.
+        /// </summary>
         public void OpenForEdit(Driver driver)
         {
             this.driver = driver;
@@ -116,60 +160,24 @@ namespace GAIManagment.ModuleDrivers.Presentation.Windows
 
         private void AddAction()
         {
-            try
+            if(imgPhoto.Source != null)
             {
                 var image = imgPhoto.Source as BitmapImage;
                 File.Copy(image.UriSource.OriginalString, Environment.CurrentDirectory + $"/DriversPhotos/{image.UriSource.Segments.Last()}");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Фото с таким названием уже существует!");
             }
 
             FillDriverInfo();
 
             PracticeDAO.Context.Drivers.Add(driver);
             PracticeDAO.Context.SaveChanges();
-        }
+        } 
 
-        private void btnAction_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                action?.Invoke();
-                Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnPickPhoto_Click(object sender, RoutedEventArgs e)
-        {
-            var openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JPG|*.jpg|JPEG|*.jpeg|PNG|*.png";
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                var image = new BitmapImage(new Uri(openFileDialog.FileName));
-
-                if (!Check34Res((int)image.Height, (int)image.Width))
-                {
-                    MessageBox.Show("Неверное соотношение сторон! Соотношение сторон должно быть 3:4!");
-                    return;
-                }
-                if(image.StreamSource.Length > 2048)
-                {
-                    MessageBox.Show("Размер файла не должен превышать 2МБ!");
-                    return;
-                }
-
-                imgPhoto.Source = image;
-                imgPhoto.Tag = openFileDialog.SafeFileName;
-            }
-        }
-
+        /// <summary>
+        /// Вернет true, если соотношение сторон 3:4
+        /// </summary>
+        /// <param name="height"></param>
+        /// <param name="width"></param>
+        /// <returns></returns>
         private bool Check34Res(int height, int width)
         {
             return height % 4 == 0 && width % 3 == 0 && height / 4 == width / 3;

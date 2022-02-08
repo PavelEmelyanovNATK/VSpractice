@@ -9,7 +9,7 @@
       Title="TakenLicensesStatisticsPage"
       Loaded="Page_Loaded">
 
-    <Grid Background="White">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
@@ -121,13 +121,11 @@
                         Grid.Row="2">
                         <Button 
                             Content="Экспорт CSV"
-                            Click="YearsExport_Click"
+                            Click="MonthsExport_Click"
                             HorizontalAlignment="Left"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
-
-           
         </TabControl>
     </Grid>
 </Page>

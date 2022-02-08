@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GAIManagment.ModuleLicenses.Presentation.Windows"
         mc:Ignorable="d"
-        Title="RegLicenseWindow" Height="200" Width="550"
+        Title="Регистрация удостоверения" Height="200" Width="550"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Icon="gibdd_logo.png"
+        Style="{StaticResource Window}">
     <Grid>
         <StackPanel
             HorizontalAlignment="Center"

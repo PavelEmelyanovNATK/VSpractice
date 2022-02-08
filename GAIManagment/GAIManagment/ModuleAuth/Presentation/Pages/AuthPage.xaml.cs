@@ -19,7 +19,7 @@ using System.Windows.Shapes;
 namespace GAIManagment.ModuleAuth.Presentation.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AuthPage.xaml
+    /// Окно авторизации
     /// </summary>
     public partial class AuthPage : Page
     {

@@ -2,8 +2,10 @@
 using GAIManagment.ModuleCore.Data.DataSource.Local.db;
 using GAIManagment.ModuleCore.Domain;
 using GAIManagment.ModuleStatistic.Domain;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +22,7 @@ using System.Windows.Shapes;
 namespace GAIManagment.ModuleStatistic.Presentation
 {
     /// <summary>
-    /// Логика взаимодействия для TakenLicensesStatisticsPage.xaml
+    /// Страница статистики изъятых удостоверений
     /// </summary>
     public partial class TakenLicensesStatisticsPage : Page
     {
@@ -36,6 +38,45 @@ namespace GAIManagment.ModuleStatistic.Presentation
         {
             RefreshMonthsTab();
 
+            RefreshYearsTab();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavController.GoBack();
+        }
+
+        private void cbYears_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            RefreshMonthsTab();
+        }
+
+        private void YearsExport_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ExportYearsCVS();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void MonthsExport_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ExportMonthsCVS();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cbStartEndYears_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
             RefreshYearsTab();
         }
 
@@ -81,6 +122,10 @@ namespace GAIManagment.ModuleStatistic.Presentation
             }
         }
 
+        /// <summary>
+        /// Возвращает всю статистику за все года, сортируя её по месяцам.
+        /// </summary>
+        /// <returns></returns>
         private List<MonthsLicensesStatisticItem> GetAllMonthsStatistics() 
         {
             var newStatistics = new List<MonthsLicensesStatisticItem>();
@@ -132,6 +177,10 @@ namespace GAIManagment.ModuleStatistic.Presentation
             return newStatistics;
         }
 
+        /// <summary>
+        /// Возвращает статистику за выбранный год, сортируя её по месяцам.
+        /// </summary>
+        /// <returns></returns>
         private List<MonthsLicensesStatisticItem> GetMonthsStatisticByYear()
         {
             var newStatistics = new List<MonthsLicensesStatisticItem>();
@@ -180,21 +229,45 @@ namespace GAIManagment.ModuleStatistic.Presentation
             return newStatistics;
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
+        private void ExportYearsCVS()
         {
-            NavController.GoBack();
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = ".CSV|*.csv";
+            saveFileDialog.FileName = "driver_license_statistic_by_year";
+
+            if(saveFileDialog.ShowDialog() == true)
+            {
+                var csvString = "Year;Quantity\n";
+                foreach(var item in lvYearsStatistics.Items)
+                {
+                    var stat = item as YearsLicensesStatisticItem;
+
+                    csvString += stat.Year + ";" + stat.Quantity + '\n';
+                }
+                File.WriteAllText(saveFileDialog.FileName, csvString);
+            }
         }
 
-        private void cbYears_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ExportMonthsCVS()
         {
-            RefreshMonthsTab();
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = ".CSV|*.csv";
+            saveFileDialog.FileName = "driver_license_statistic_by_months";
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                var csvString = "Year;Jun;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec\n";
+                foreach (var item in lvMonthsStatistics.Items)
+                {
+                    var stat = item as MonthsLicensesStatisticItem;
+
+                    csvString += stat.Year + ";" + stat.Jun + ";" + stat.Feb + ";" + stat.Mar + ";" + stat.Apr + ";" + stat.May + ";" + stat.Jun + ";" + stat.Jul + ";" + stat.Aug + ";" + stat.Sep + ";" + stat.Oct + ";" + stat.Nov + ";" + stat.Dec + '\n';
+                }
+                File.WriteAllText(saveFileDialog.FileName, csvString);
+            }
         }
 
-        private void YearsExport_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        
         private void RefreshYearsTab()
         {
             int minYear;
@@ -206,6 +279,7 @@ namespace GAIManagment.ModuleStatistic.Presentation
             {
                 minYear = (int)cbStartYear.SelectedItem;
             }
+
             int maxYear;
             if (cbEndYear.SelectedItem is null)
             {
@@ -222,6 +296,8 @@ namespace GAIManagment.ModuleStatistic.Presentation
                 return;
             }
 
+            //Поиск изъятых удостоверений, входящих
+            //в выбранный временной промежуток из истории
             var historyes = PracticeDAO.Context.LicenseStatusHistories.Where(h => h.Date.Year >= minYear && h.Date.Year <= maxYear && h.StatusID == 4).ToArray();
 
             var sortedHistoryes = new Dictionary<int, int>();
@@ -233,13 +309,6 @@ namespace GAIManagment.ModuleStatistic.Presentation
             }
                 
             lvYearsStatistics.ItemsSource = sortedHistoryes.Select(i => new YearsLicensesStatisticItem { Year = i.Key, Quantity = i.Value });
-        }
-
-        
-
-        private void cbStartEndYears_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            RefreshYearsTab();
         }
     }
 }

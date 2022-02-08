@@ -18,11 +18,12 @@ using System.Windows.Shapes;
 namespace GAIManagment.ModuleLicenses.Presentation.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для ChangeStatusWindow.xaml
+    /// Диалоговое окно изменения статуса удостоверения.
     /// </summary>
     public partial class ChangeStatusWindow : Window
     {
-        int licenseId;
+        private int licenseId { get; set; }
+
         public ChangeStatusWindow()
         {
             InitializeComponent();
@@ -53,11 +54,13 @@ namespace GAIManagment.ModuleLicenses.Presentation.Windows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            RefreshStatuses();
+            RefreshData();
         }
 
-        private void RefreshStatuses()
+        private void RefreshData()
         {
+            var license = PracticeDAO.Context.Licenses.Find(licenseId);
+            Title = $"Изменение статуса удостоверения {license.LicenseSeries} {license.LicenseNumber}";
             cbStatuses.ItemsSource = PracticeDAO.Context.Status.ToArray();
         }
 

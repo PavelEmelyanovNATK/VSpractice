@@ -9,17 +9,17 @@
       Title="LicensesPage"
       Loaded="Page_Loaded">
 
-    <Grid Background="White">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <StackPanel
-            Grid.Row="0"
-            Orientation="Horizontal">
-            <Button Content="Назад" Click="BackButton_Click"/>
-        </StackPanel>
+        <Grid
+            Grid.Row="0">
+            <Button Content="Назад" Click="BackButton_Click" HorizontalAlignment="Left"/>
+            <TextBlock Text="Удостоверения" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
 
         <ListView
             x:Name="lvLicenses"
@@ -72,9 +72,11 @@
                 Click="btnHistory_Click"/>
 
             <Button 
-                x:Name="btnPrint"
-                Content="Распечатать"
-                Click="btnPrint_Click"/>
+                x:Name="btnDelete"
+                Content="Удалить"
+                Click="btnDelete_Click"
+                Visibility="Visible"
+                Style="{StaticResource NegativeButton}"/>
         </StackPanel>
     </Grid>
 </Page>

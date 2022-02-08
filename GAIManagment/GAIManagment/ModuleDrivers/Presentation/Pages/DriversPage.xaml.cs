@@ -2,6 +2,7 @@
 using GAIManagment.ModuleCore.Data.DataSource.Local.db;
 using GAIManagment.ModuleCore.Domain;
 using GAIManagment.ModuleDrivers.Presentation.Windows;
+using GAIManagment.ModuleLicenses.Presentation.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ using System.Windows.Shapes;
 namespace GAIManagment.ModuleDrivers.Presentation.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для DriversPage.xaml
+    /// Главная страница модуля водителей.
     /// </summary>
     public partial class DriversPage : Page
     {
@@ -42,24 +43,6 @@ namespace GAIManagment.ModuleDrivers.Presentation.Pages
             NavController.GoBack();
         }
 
-
-        void RefreshDrivers()
-        {
-            lvDrivers.ItemsSource = PracticeDAO.Context.Drivers.ToList();
-        }
-
-        void DisableEditButtons()
-        {
-            btnEdit.IsEnabled = false;
-            btnDelete.IsEnabled = false;
-        }
-
-        void EnableEditButtons()
-        {
-            btnEdit.IsEnabled = true;
-            btnDelete.IsEnabled = true;
-        }
-
         private void lvDrivers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lvDrivers.SelectedItems.Count > 0)
@@ -70,15 +53,6 @@ namespace GAIManagment.ModuleDrivers.Presentation.Pages
             {
                 DisableEditButtons();
             }
-        }
-
-        void OpenDriver()
-        {
-            var addEditWin = new AddEditDriverWindow();
-
-            addEditWin.OpenForEdit(lvDrivers.SelectedItem as Driver);
-
-            RefreshDrivers();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -102,17 +76,62 @@ namespace GAIManagment.ModuleDrivers.Presentation.Pages
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (MessageBox.Show("Вы уверены?", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                PracticeDAO.Context.Drivers.Remove(lvDrivers.SelectedItem as Driver);
-                PracticeDAO.Context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                try
+                {
+                    DeleteDriver();
+                }
+                catch (Exception ex)
+                {
+                    PracticeDAO.Refresh();
+                    MessageBox.Show(ex.Message);
+                }
             }
 
             RefreshDrivers();
+        }
+
+        private void btnLicenses_Click(object sender, RoutedEventArgs e)
+        {
+            var licensesWindow = new DriverLicensesWindow((lvDrivers.SelectedItem as Driver).ID);
+            licensesWindow.Show();
+        }
+
+        void RefreshDrivers()
+        {
+            lvDrivers.ItemsSource = PracticeDAO.Context.Drivers.ToList();
+        }
+
+        void DisableEditButtons()
+        {
+            btnEdit.IsEnabled = false;
+            btnDelete.IsEnabled = false;
+            btnLicenses.IsEnabled = false;
+        }
+
+        void EnableEditButtons()
+        {
+            btnEdit.IsEnabled = true;
+            btnDelete.IsEnabled = true;
+            btnLicenses.IsEnabled = true;
+        }
+
+        void OpenDriver()
+        {
+            var addEditWin = new AddEditDriverWindow();
+
+            addEditWin.OpenForEdit(lvDrivers.SelectedItem as Driver);
+
+            RefreshDrivers();
+        }
+
+        private void DeleteDriver()
+        {
+            var driver = lvDrivers.SelectedItem as Driver;
+            driver?.Licenses.Clear();
+            PracticeDAO.Context.Drivers.Remove(driver);
+            PracticeDAO.Context.SaveChanges();
         }
     }
 }

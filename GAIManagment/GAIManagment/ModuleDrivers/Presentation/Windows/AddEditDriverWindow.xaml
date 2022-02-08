@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:GAIManagment.ModuleDrivers.Presentation.Windows"
         mc:Ignorable="d"
         Title="AddEditDriverWindow" Height="550" Width="450"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Closed="Window_Closed" Icon="gibdd_logo.png"
+        Style="{StaticResource Window}">
     <Grid>
         <StackPanel
             HorizontalAlignment="Center"
